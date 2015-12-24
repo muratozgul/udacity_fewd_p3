@@ -19,9 +19,9 @@ var Unit = function(spriteImage, colOffset, x, y) {
   // Collision box offset relative to the sprite
   this.relCollisionBox = { 
     leftOffset: colOffset ? colOffset.left : 0,
-    rightOffset: colOffset ? colOffset.right : 100,
-    topOffset: colOffset ? colOffset.top : 0,
-    bottomOffset: colOffset ? colOffset.bottom : 100
+    rightOffset: colOffset ? colOffset.right : 101,
+    topOffset: colOffset ? colOffset.top : 51,
+    bottomOffset: colOffset ? colOffset.bottom : 40
   }
 };
 
@@ -85,4 +85,30 @@ Unit.prototype.getCollisionBox = function() {
 
   return collisionBox;
 };
+
+/**
+ * Positions the unit on a specific tile
+ * @param {Number} tileRow - Row number of tile (0 indexed)
+ * @param {Number} tileCol - Column number of tile (0 indexed)
+ */
+Unit.prototype.placeOnTile = function(tileRow, tileCol) {
+  var td = level.tileData;
+  var rcb = this.relCollisionBox;
+
+  // Get tile position
+  var tilePosition = td.getTileCenter(tileRow, tileCol);
+
+  // Update draw position of the unit accordingly
+  this.drawPosition.x = tilePosition.x - Math.floor(td.width/2);
+  this.drawPosition.y = tilePosition.y - rcb.bottomOffset - 20;
+};
+
+
+
+
+
+
+
+
+
 

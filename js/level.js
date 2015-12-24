@@ -28,5 +28,20 @@ var levelFactory = function(){
     }
   }
 
+  level.tileData = {
+    height: 171,
+    width: 101,
+    surfaceTopOffset: 51,
+    surfaceBottomOffset: 131,
+    surfaceHeight: 80,
+    getTileCenter: function(row, col){
+      row++;
+      col++;
+      var x = col*this.width - Math.floor(this.width/2);
+      var y = row*this.surfaceHeight + this.surfaceTopOffset;
+      return {x: x, y: y};
+    }
+  }
+
   return level;
 };

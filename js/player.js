@@ -7,9 +7,13 @@ var Player = function() {
   Unit.call(this, 'images/char-boy.png', {
     left: 16,
     right: 85,
-    top: 63,
+    top: 85,
     bottom: 140
   }, 100, 100);
+  this.status: {
+    action: 'idle',
+    startTime: Date.now()
+  }
 };
 
 Player.prototype = Object.create(Unit.prototype);
@@ -30,5 +34,9 @@ Player.prototype.update = function(dt) {
  * @override
  */
 Player.prototype.handleInput = function(direction) {
+  console.log(direction);
+};
+
+Player.prototype.jump = function(direction) {
   console.log(direction);
 };
