@@ -14,7 +14,12 @@ function getRandomIntInclusive(min, max) {
  * @extends - Unit
  */
 var Enemy = function() {
-  Unit.call(this, 'images/enemy-bug.png');
+  Unit.call(this, 'images/enemy-bug.png', {
+    left: 2,
+    right: 99,
+    top: 75,
+    bottom: 145
+  });
   this.speed = getRandomIntInclusive(5, 10); // Horizontal speed of enemy
 };
 
@@ -27,5 +32,5 @@ Enemy.prototype.constructor = Enemy;
  * @override
  */
 Enemy.prototype.update = function(dt) {
-  this.x += this.speed * dt;
+  this.drawPosition.x += this.speed * dt;
 };

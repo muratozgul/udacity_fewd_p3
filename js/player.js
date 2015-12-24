@@ -4,7 +4,12 @@
  * @extends - Unit
  */
 var Player = function() {
-  Unit.call(this, 'images/char-boy.png', 100, 100);
+  Unit.call(this, 'images/char-boy.png', {
+    left: 16,
+    right: 85,
+    top: 63,
+    bottom: 140
+  }, 100, 100);
 };
 
 Player.prototype = Object.create(Unit.prototype);
@@ -25,5 +30,5 @@ Player.prototype.update = function(dt) {
  * @override
  */
 Player.prototype.handleInput = function(direction) {
-  
+  console.log(direction);
 };
