@@ -36,8 +36,8 @@ Player.prototype.directions = {
  * @override
  */
 Player.prototype.update = function(dt) {
-  if(this.status.action === 'jumping') {
 
+  if(this.status.action === 'jumping') {
     // calculate distance covered
     var distanceCovered = Math.min(dt * this.speed, this.status.distanceLeft);
     
@@ -58,6 +58,14 @@ Player.prototype.update = function(dt) {
     if(this.status.distanceLeft <= 0) {
       this.status.action = 'idle';
     }
+  }
+
+  var isCollision = allEnemies.some(function(currentEnemy, index, array){
+    return this.checkCollisionWith(currentEnemy);
+  }, this);
+
+  if(isCollision) {
+    
   }
 };
 

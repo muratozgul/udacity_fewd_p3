@@ -102,3 +102,24 @@ Unit.prototype.placeOnTile = function(tileRow, tileCol) {
   this.drawPosition.x = tilePosition.x - Math.floor(td.width/2);
   this.drawPosition.y = tilePosition.y - rcb.bottomOffset - 20;
 };
+
+/**
+ * Checks collision with given unit
+ * @param {Object} unit - Any object that extends unit
+ * @returns {Boolean} - True if there is collision, false otherwise
+ */
+Unit.prototype.checkCollisionWith = function(unit) {
+  var rect1 = this.getCollisionBox();
+  var rect2 = unit.getCollisionBox();
+
+  if( rect1.left < rect2.right &&
+      rect1.right > rect2.left &&
+      rect1.top < rect2.bottom &&
+      rect1.bottom > rect2.top)
+  {
+    return true;
+  }
+  return false;
+};
+
+
