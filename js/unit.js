@@ -102,13 +102,3 @@ Unit.prototype.placeOnTile = function(tileRow, tileCol) {
   this.drawPosition.x = tilePosition.x - Math.floor(td.width/2);
   this.drawPosition.y = tilePosition.y - rcb.bottomOffset - 20;
 };
-
-
-
-
-
-
-
-
-
-

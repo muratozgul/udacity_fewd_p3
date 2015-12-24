@@ -41,12 +41,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     level = levelFactory();
 
     player = new Player();
-    player.placeOnTile(3, 2);
+    player.placeOnTile(5, 2);
 
     allEnemies = [];
-    allEnemies.push(new Enemy());
-
-    allEnemies[0].placeOnTile(1,0);
+    allEnemies.push(new Enemy(1));
+    allEnemies.push(new Enemy(2));
+    allEnemies.push(new Enemy(3));
 
     engine.init();
   });
