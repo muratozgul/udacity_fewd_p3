@@ -1,7 +1,8 @@
 ### To Run:
-1. Open index.html
-2. Select your hero by using left and right arrow keys
-3. Press enter, the game will start
+1. Clone the repo
+2. Open index.html (preferably with chrome)
+3. Select your hero by using left and right arrow keys
+4. Press enter, the game will start
 
 ### To Play:
 1. Use keyboard arrow keys to move from tile to tile
