@@ -19,6 +19,7 @@ var Player = function() {
   };
   
   this.speed = 200; //jump speed
+  this.score = 0;
 };
 
 Player.prototype = Object.create(Unit.prototype);

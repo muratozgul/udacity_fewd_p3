@@ -29,6 +29,7 @@ HUD.prototype.update = function(dt) {
 HUD.prototype.render = function() {
   this.clearHUDspace();
   this.drawTime();
+  this.drawScore();
 };
 
 HUD.prototype.drawTime = function(){
@@ -36,12 +37,21 @@ HUD.prototype.drawTime = function(){
   var min = (ms/1000/60) << 0;
   var sec = ((ms/1000) % 60) << 0;
 
-  var timeText = "Time: " + min + ":" + sec;
+  var timeText = "Time: " + this.pad(min, 2) + ":" + this.pad(sec, 2);
 
   // draw font in red
   ctx.fillStyle = "black";
   ctx.font = "20pt sans-serif";
-  ctx.fillText(timeText, 5, 30);
+  ctx.fillText(timeText, 2, 40);
+};
+
+HUD.prototype.drawScore = function(){
+  var scoreText = "Score: " + this.pad(player.score, 6);
+
+  // draw font in red
+  ctx.fillStyle = "black";
+  ctx.font = "20pt sans-serif";
+  ctx.fillText(scoreText, 330, 40);
 };
 
 HUD.prototype.clearHUDspace = function(){
@@ -50,7 +60,11 @@ HUD.prototype.clearHUDspace = function(){
   ctx.fillRect(0, 0, level.numCols*level.tileData.width, level.tileData.surfaceTopOffset);
 };
 
-
+HUD.prototype.pad = function(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
 
 
 
