@@ -158,8 +158,6 @@ Engine.prototype.reset = function() {
   allCollectibles.forEach(function(currentCollectible, index, array){
     currentCollectible.reset();
   }, this);
-
-  this.startTime = this.lastTime;
 }
 
 

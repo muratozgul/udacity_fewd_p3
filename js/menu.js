@@ -95,6 +95,7 @@ Menu.prototype.handleInput = function(keyString) {
   } else if(keyString === 'enter') {
     if(this.state === this.states.SELECTION){
       player.setSpriteImage(this.playerCatalog[this.selectedPlayer]);
+      engine.startTime = engine.lastTime;
       this.state = this.states.HIDDEN;
     } else if(this.state === this.states.WIN || this.state === this.states.LOSE) {
       engine.reset();
