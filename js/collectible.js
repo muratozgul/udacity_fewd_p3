@@ -9,6 +9,7 @@
 var Collectible = function(spriteImage, row, col) {
   spriteImage = spriteImage || 'images/Star.png';
 
+  // call super
   Unit.call(this, spriteImage, {
     left: 2,
     right: 99,
@@ -17,10 +18,12 @@ var Collectible = function(spriteImage, row, col) {
   });
 
   if(row) {
+    // if row specified place on the specific tile
     this.row = row || 1;
     this.col = col || 1;
     this.placeOnTile(this.row, this.col);
   } else {
+    // if row NOT specified place on random tile
     this.reset();
   }
   

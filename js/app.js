@@ -5,11 +5,7 @@
 /** @global */
 var engine, level, player, allEnemies, allCollectibles, hud, menu;
 
-var appState = 'menu';
-
-
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// This listens for key presses and sends the keys to the player
 document.addEventListener('keydown', function(e) {
   var allowedKeys = {
     37: 'left',
@@ -18,11 +14,13 @@ document.addEventListener('keydown', function(e) {
     40: 'down'
   };
 
+  // if menu is hidden (game started) send commands to the player
   if(menu.state === menu.states.HIDDEN) {
     player.handleInput(allowedKeys[e.keyCode]);
   }
 });
 
+// This listens for key releases and sends the keys to the menu
 document.addEventListener('keyup', function(e) {
   var allowedKeys = {
     37: 'left',
@@ -30,6 +28,7 @@ document.addEventListener('keyup', function(e) {
     13: 'enter'
   };
 
+  // if menu is visible (game stopped) send commands to the menu
   if(menu.state !== menu.states.HIDDEN) {
     menu.handleInput(allowedKeys[e.keyCode]);
   }
@@ -57,8 +56,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     'images/Star.png'
   ]);
 
-  // When resources are ready, start the game
+  // When resources are ready, create entities and start the game
   Resources.onReady(function(){
+    // Create entities
     engine = new Engine(GLOBAL);
 
     level = levelFactory();
@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     allCollectibles = [];
     allCollectibles.push(new Collectible());
 
+    // Start game engine
     engine.init();
   });
   

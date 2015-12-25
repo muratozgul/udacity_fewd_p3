@@ -1,3 +1,7 @@
+/**
+ * Level factory crates and returns a level object
+ * @returns {Object} - level object for generating level and providing info about the level
+ */
 var levelFactory = function(){
   var level = {};
 
@@ -10,9 +14,12 @@ var levelFactory = function(){
     'images/grass-block.png'    // Row 2 of 2 of grass
   ];
 
-  level.numRows = 6;
-  level.numCols = 5;
+  level.numRows = 6; // #of Tile rows
+  level.numCols = 5; // #of Tile columns
 
+  /**
+   * Draw the level map on the screen
+   */
   level.render = function(){
     for (var row = 0; row < level.numRows; row++) {
       for (var col = 0; col < level.numCols; col++) {
@@ -28,12 +35,20 @@ var levelFactory = function(){
     }
   }
 
+  // Helper data object
   level.tileData = {
-    height: 171,
-    width: 101,
-    surfaceTopOffset: 51,
-    surfaceBottomOffset: 131,
-    surfaceHeight: 80,
+    height: 171, // Tile height
+    width: 101, // Tile width
+    surfaceTopOffset: 51, // Tile top offset (transparent)
+    surfaceBottomOffset: 131, // Tile bottom offset (underground)
+    surfaceHeight: 80, // Visible tile height when stacked
+    /**
+     * Returns the center coordinates of a tile
+     * Helps alignment for placement and drawing
+     * @param {Number} row - Row index of the tile
+     * @param {Number} col - Column index of the tile
+     * @returns {Object} - Contains x and y position of tile center
+     */
     getTileCenter: function(row, col){
       row++;
       col++;

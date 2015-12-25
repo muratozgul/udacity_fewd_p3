@@ -5,15 +5,16 @@
  * @extends - Unit
  */
 var Enemy = function(row) {
+  // call super
   Unit.call(this, 'images/enemy-bug.png', {
     left: 2,
     right: 99,
     top: 75,
     bottom: 145
   });
-  this.maxSpeed = 200;
-  this.minSpeed = 40;
-  this.speed = 15; // Horizontal speed of enemy
+  this.maxSpeed = 200; // Maximum horizontal speed of enemy
+  this.minSpeed = 40; // Minimum horizontal speed of enemy
+  this.speed = 15; // Default (fallback) horizontal speed of enemy
   this.row = row || 1;
   this.reset();
 };

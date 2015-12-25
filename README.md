@@ -8,6 +8,7 @@
 1. Use keyboard arrow keys to move from tile to tile
 2. If the game ends, hit enter to restart
 
+### Rules:
 * Goal is to reach the water
 * Reaching the water gives +100 points
 * Collecting the starts gives +50 points (Not necessary to win)
