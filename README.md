@@ -1,3 +1,19 @@
+### To Run:
+1. Open index.html
+2. Select your hero by using left and right arrow keys
+3. Press enter, the game will start
+
+### To Play:
+1. Use keyboard arrow keys to move from tile to tile
+2. If the game ends, hit enter to restart
+
+* Goal is to reach the water
+* Reaching the water gives +100 points
+* Collecting the starts gives +50 points (Not necessary to win)
+* Touching the bugs will kill you, you lose all your score
+* You keep your score if you win
+
+
 frontend-nanodegree-arcade-game
 ===============================
 
