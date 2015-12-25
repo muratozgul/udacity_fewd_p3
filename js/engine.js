@@ -19,11 +19,12 @@ var Engine = function(global) {
    * create the canvas element, grab the 2D context for that canvas
    * set the canvas elements height/width and add it to the DOM.
    */
-  this.doc = global.document,
-  this.win = global.window,
-  this.canvas = this.doc.createElement('canvas'),
-  this.ctx = this.canvas.getContext('2d'),
+  this.doc = global.document;
+  this.win = global.window;
+  this.canvas = this.doc.createElement('canvas');
+  this.ctx = this.canvas.getContext('2d');
   this.lastTime;
+  this.startTime;
 
   this.canvas.width = 505;
   this.canvas.height = 606;
@@ -73,6 +74,7 @@ Engine.prototype.main = function(){
 Engine.prototype.init = function(){
   this.reset();
   this.lastTime = Date.now();
+  this.startTime = this.lastTime;
   this.main();
 }
 
@@ -112,6 +114,7 @@ Engine.prototype.updateEntities = function(dt) {
  */
 Engine.prototype.render = function() {
   level.render();
+  hud.render();
   this.renderEntities();
 }
 

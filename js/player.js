@@ -10,12 +10,14 @@ var Player = function() {
     top: 85,
     bottom: 140
   }, 100, 100);
+
   this.status = {
     action: 'idle',
     direction: 0,
     startTime: Date.now(),
     distanceLeft: 0
   };
+  
   this.speed = 200; //jump speed
 };
 
@@ -65,7 +67,7 @@ Player.prototype.update = function(dt) {
   }, this);
 
   if(isCollision) {
-    
+
   }
 };
 

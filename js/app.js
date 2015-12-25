@@ -3,7 +3,7 @@
 // Place the player object in a variable called player
 
 /** @global */
-var engine, level, player, allEnemies;
+var engine, level, player, allEnemies, hud;
 
 
 // This listens for key presses and sends the keys to your
@@ -39,6 +39,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     engine = new Engine(GLOBAL);
 
     level = levelFactory();
+
+    hud = new HUD();
 
     player = new Player();
     player.placeOnTile(5, 2);
