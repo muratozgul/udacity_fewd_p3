@@ -108,5 +108,7 @@ Player.prototype.jump = function(direction) {
   }
 };
 
-
+Player.prototype.setSpriteImage = function(imageUrl) {
+  this.sprite.image = imageUrl;
+};
 

@@ -39,21 +39,35 @@ Menu.prototype.render = function() {
   this.rightButton.render();
   this.leftButton.render();
 
-  this.drawText("Use keyboard arrow keys to change player", this.CW/2, 200);
-  this.drawText("Press enter to start", this.CW/2, 450);
+  this.drawTextWithBackground("Use keyboard arrow keys to change player", this.CW/2, 200);
+  this.drawTextWithBackground("Press enter to start", this.CW/2, 450);
 
   //draw player image
   ctx.drawImage(Resources.get(this.playerCatalog[this.selectedPlayer]), this.CW/2-this.TW/2, this.CH/2-100);
 };
 
 Menu.prototype.handleInput = function(keyString) {
+  var self = this;
+
+  var avatars = Object.keys(this.playerCatalog);
+  var len = avatars.length;
+
+  function nextAvatar(shifter) {
+    shifter = shifter || 1;
+    var index = avatars.indexOf(self.selectedPlayer);
+    var nextIndex = (((index+shifter)%len)+len)%len;
+    return avatars[nextIndex];
+  }
+
   if(keyString === 'left') {
-    this.leftButton.clicked();    
+    this.leftButton.clicked();  
+    this.selectedPlayer = nextAvatar(-1);
   } else if(keyString === 'right') {
-    this.rightButton.clicked();  
+    this.rightButton.clicked();
+    this.selectedPlayer = nextAvatar();
   } else if(keyString === 'enter') {
+    player.setSpriteImage(this.playerCatalog[this.selectedPlayer]);
     appState = 'playing';
-    console.log("appstate", appState);
   }
 };
 
@@ -64,5 +78,11 @@ Menu.prototype.drawText = function(text, x, y) {
   ctx.textAlign = "center";
   ctx.strokeText(text, x, y);
   ctx.fillText(text, x, y);
+}
+
+Menu.prototype.drawTextWithBackground = function(text, x, y) {
+  ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+  ctx.fillRect(0, y-30, this.CW, 44);
+  this.drawText(text, x, y);
 }
 

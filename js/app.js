@@ -49,7 +49,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     'images/enemy-bug.png',
     'images/char-boy.png',
     'images/carousel-arrow-right.png',
-    'images/carousel-arrow-left.png'
+    'images/carousel-arrow-left.png',
+    'images/char-cat-girl.png',
+    'images/char-horn-girl.png',
+    'images/char-pink-girl.png',
+    'images/char-princess-girl.png'
   ]);
 
   // When resources are ready, start the game
