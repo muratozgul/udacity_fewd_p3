@@ -18,7 +18,7 @@ document.addEventListener('keydown', function(e) {
     40: 'down'
   };
 
-  if(appState !== 'menu') {
+  if(menu.state === menu.states.HIDDEN) {
     player.handleInput(allowedKeys[e.keyCode]);
   }
 });
@@ -30,7 +30,7 @@ document.addEventListener('keyup', function(e) {
     13: 'enter'
   };
 
-  if(appState === 'menu') {
+  if(menu.state !== menu.states.HIDDEN) {
     menu.handleInput(allowedKeys[e.keyCode]);
   }
 });

@@ -70,7 +70,7 @@ Player.prototype.update = function(dt) {
   }, this);
 
   if(isCollision) {
-
+    menu.state = menu.states.LOSE;
   }
 };
 
@@ -112,3 +112,8 @@ Player.prototype.setSpriteImage = function(imageUrl) {
   this.sprite.image = imageUrl;
 };
 
+Player.prototype.reset = function() {
+  this.score = 0;
+  this.placeOnTile(5, 2);
+  this.status.action = 'idle';
+};

@@ -26,6 +26,15 @@ var Menu = function() {
   };
 
   this.selectedPlayer = 'boy';
+
+  this.state = 0;
+
+  this.states = {
+    SELECTION: 0,
+    HIDDEN: 1,
+    WIN: 2,
+    LOSE: 3
+  }
 };
 
 Menu.prototype.constructor = Menu;
@@ -36,6 +45,16 @@ Menu.prototype.update = function(dt) {
 };
 
 Menu.prototype.render = function() {
+  if(this.state === this.states.SELECTION){
+    this.renderSelection();
+  } else if(this.state === this.states.WIN) {
+    this.renderWin();
+  } else if(this.state === this.states.LOSE) {
+    this.renderLose();
+  }
+};
+
+Menu.prototype.renderSelection = function() {
   this.rightButton.render();
   this.leftButton.render();
 
@@ -44,6 +63,14 @@ Menu.prototype.render = function() {
 
   //draw player image
   ctx.drawImage(Resources.get(this.playerCatalog[this.selectedPlayer]), this.CW/2-this.TW/2, this.CH/2-100);
+};
+
+Menu.prototype.renderWin = function() {
+  this.drawTextWithBackground("YOU WIN", this.CW/2, 450);
+};
+
+Menu.prototype.renderLose = function() {
+  this.drawTextWithBackground("YOU LOSE", this.CW/2, 450);
 };
 
 Menu.prototype.handleInput = function(keyString) {
@@ -66,8 +93,13 @@ Menu.prototype.handleInput = function(keyString) {
     this.rightButton.clicked();
     this.selectedPlayer = nextAvatar();
   } else if(keyString === 'enter') {
-    player.setSpriteImage(this.playerCatalog[this.selectedPlayer]);
-    appState = 'playing';
+    if(this.state === this.states.SELECTION){
+      player.setSpriteImage(this.playerCatalog[this.selectedPlayer]);
+      this.state = this.states.HIDDEN;
+    } else if(this.state === this.states.WIN || this.state === this.states.LOSE) {
+      engine.reset();
+    }
+    
   }
 };
 
@@ -78,11 +110,11 @@ Menu.prototype.drawText = function(text, x, y) {
   ctx.textAlign = "center";
   ctx.strokeText(text, x, y);
   ctx.fillText(text, x, y);
-}
+};
 
 Menu.prototype.drawTextWithBackground = function(text, x, y) {
   ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
   ctx.fillRect(0, y-30, this.CW, 44);
   this.drawText(text, x, y);
-}
+};
 
