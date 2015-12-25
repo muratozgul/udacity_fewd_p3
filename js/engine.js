@@ -140,6 +140,10 @@ Engine.prototype.renderEntities = function() {
     enemy.render();
   });
 
+  allCollectibles.forEach(function(collectible) {
+    collectible.render();
+  });
+
   player.render();
 }
 
@@ -151,6 +155,11 @@ Engine.prototype.reset = function() {
   menu.state = menu.states.SELECTION;
   hud.reset();
   player.reset();
+  allCollectibles.forEach(function(currentCollectible, index, array){
+    currentCollectible.reset();
+  }, this);
+
+  this.startTime = this.lastTime;
 }
 
 

@@ -1,14 +1,4 @@
 /**
- * Returns a random integer between min (included) and max (included)
- * @param {Number} min - Lower bound, inclusive
- * @param {Number} max - Upper bound, inclusive
- * @returns {Number} - A random integer
- */
-function getRandomIntInclusive(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-/**
  * Enemies our player must avoid
  * @param {Number} [row=1] - Starting row of the enemy
  * @class

@@ -3,7 +3,7 @@
 // Place the player object in a variable called player
 
 /** @global */
-var engine, level, player, allEnemies, hud, menu;
+var engine, level, player, allEnemies, allCollectibles, hud, menu;
 
 var appState = 'menu';
 
@@ -53,7 +53,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     'images/char-cat-girl.png',
     'images/char-horn-girl.png',
     'images/char-pink-girl.png',
-    'images/char-princess-girl.png'
+    'images/char-princess-girl.png',
+    'images/Star.png'
   ]);
 
   // When resources are ready, start the game
@@ -73,6 +74,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     allEnemies.push(new Enemy(1));
     allEnemies.push(new Enemy(2));
     allEnemies.push(new Enemy(3));
+
+    allCollectibles = [];
+    allCollectibles.push(new Collectible());
 
     engine.init();
   });

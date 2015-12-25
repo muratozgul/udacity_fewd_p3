@@ -1,4 +1,14 @@
 /**
+ * Returns a random integer between min (included) and max (included)
+ * @param {Number} min - Lower bound, inclusive
+ * @param {Number} max - Upper bound, inclusive
+ * @returns {Number} - A random integer
+ */
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+/**
  * Generic unit class
  * @param {string} sprite - Path to the image file to draw
  * @param {Object=} colOffset - Collision box offset values relative to the sprite position
@@ -106,7 +116,7 @@ Unit.prototype.placeOnTile = function(tileRow, tileCol) {
 };
 
 /**
- * Checks collision with given unit
+ * Checks collision with a given unit
  * @param {Object} unit - Any object that extends unit
  * @returns {Boolean} - True if there is collision, false otherwise
  */

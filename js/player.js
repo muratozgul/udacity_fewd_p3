@@ -63,6 +63,7 @@ Player.prototype.update = function(dt) {
     if(this.status.distanceLeft <= 0) {
       this.status.action = 'idle';
       if(this.getTile().row === 0){
+        player.score += 100;
         menu.state = menu.states.WIN;
       }
     }
@@ -72,7 +73,14 @@ Player.prototype.update = function(dt) {
     return this.checkCollisionWith(currentEnemy);
   }, this);
 
+  allCollectibles.forEach(function(currentCollectible, index, array){
+    if(!currentCollectible.isCollected && this.checkCollisionWith(currentCollectible)) {
+      currentCollectible.collected();
+    }
+  }, this);
+
   if(isCollision) {
+    this.score = 0;
     menu.state = menu.states.LOSE;
   }
 };
@@ -128,7 +136,7 @@ Unit.prototype.getTile = function() {
 };
 
 Player.prototype.reset = function() {
-  this.score = 0;
   this.placeOnTile(5, 2);
   this.status.action = 'idle';
+  this.status.distanceLeft = 0;
 };
