@@ -1,5 +1,5 @@
 /**
- * Generic unit class (any moving object inherits from Unit)
+ * Generic unit class
  * @param {string} sprite - Path to the image file to draw
  * @param {Object=} colOffset - Collision box offset values relative to the sprite position
  * @param {Number} [x=0] - X position in the canvas
@@ -11,19 +11,21 @@ var Unit = function(spriteImage, colOffset, x, y) {
     image: spriteImage, // The image/sprite to draw
     width: 101, // Width of the sprite in pixels
     height: 171 // Height of the sprite in pixels
-  },
+  };
   this.drawPosition = {
     x: x || 0, // X position in the canvas
     y: y || 0 // Y position in the canvas
-  },
+  };
   // Collision box offset relative to the sprite
   this.relCollisionBox = { 
     leftOffset: colOffset ? colOffset.left : 0,
     rightOffset: colOffset ? colOffset.right : 101,
     topOffset: colOffset ? colOffset.top : 51,
     bottomOffset: colOffset ? colOffset.bottom : 40
-  }
+  };
 };
+
+Unit.prototype.constructor = Unit;
 
 /**
  * Update unit - subClasses must implement

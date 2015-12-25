@@ -3,8 +3,10 @@
  * @class
  * @extends - Unit
  */
-var Player = function() {
-  Unit.call(this, 'images/char-boy.png', {
+var Player = function(spriteImage) {
+  spriteImage = spriteImage || 'images/char-boy.png';
+
+  Unit.call(this, spriteImage, {
     left: 16,
     right: 85,
     top: 85,

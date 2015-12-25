@@ -3,7 +3,9 @@
 // Place the player object in a variable called player
 
 /** @global */
-var engine, level, player, allEnemies, hud;
+var engine, level, player, allEnemies, hud, menu;
+
+var appState = 'menu';
 
 
 // This listens for key presses and sends the keys to your
@@ -16,7 +18,21 @@ document.addEventListener('keydown', function(e) {
     40: 'down'
   };
 
-  player.handleInput(allowedKeys[e.keyCode]);
+  if(appState !== 'menu') {
+    player.handleInput(allowedKeys[e.keyCode]);
+  }
+});
+
+document.addEventListener('keyup', function(e) {
+  var allowedKeys = {
+    37: 'left',
+    39: 'right',
+    13: 'enter'
+  };
+
+  if(appState === 'menu') {
+    menu.handleInput(allowedKeys[e.keyCode]);
+  }
 });
 
 var GLOBAL = this;
@@ -31,7 +47,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     'images/water-block.png',
     'images/grass-block.png',
     'images/enemy-bug.png',
-    'images/char-boy.png'
+    'images/char-boy.png',
+    'images/carousel-arrow-right.png',
+    'images/carousel-arrow-left.png'
   ]);
 
   // When resources are ready, start the game
@@ -39,6 +57,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     engine = new Engine(GLOBAL);
 
     level = levelFactory();
+
+    menu = new Menu();
 
     hud = new HUD();
 

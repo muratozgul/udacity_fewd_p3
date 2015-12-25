@@ -88,7 +88,12 @@ Engine.prototype.init = function(){
  * on the entities themselves within your app.js file).
  */
 Engine.prototype.update = function(dt){
-  this.updateEntities(dt);
+  if(appState === "menu"){
+    menu.update(dt);
+  } else {
+    this.updateEntities(dt);  
+  }
+  
   // checkCollisions();
 }
 
@@ -114,8 +119,13 @@ Engine.prototype.updateEntities = function(dt) {
  */
 Engine.prototype.render = function() {
   level.render();
-  hud.render();
-  this.renderEntities();
+  
+  if( appState === 'menu'){
+    menu.render();
+  } else {
+    hud.render();
+    this.renderEntities();  
+  }
 }
 
 /* This function is called by the render function and is called on each game
@@ -138,6 +148,16 @@ Engine.prototype.renderEntities = function() {
  * those sorts of things. It's only called once by the init() method.
  */
 Engine.prototype.reset = function() {
-  // noop
+  
 }
+
+
+
+
+
+
+
+
+
+
 

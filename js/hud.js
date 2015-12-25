@@ -5,14 +5,21 @@
  * @class
  */
 var HUD = function(x, y) {
-  this.sprite = {
-    width: 101, // Width of the sprite in pixels
-    height: 171 // Height of the sprite in pixels
-  },
+  //this.menuSprite = 'images/carousel-arrow.png',
   this.drawPosition = {
     x: x || 0, // X position in the canvas
     y: y || 0 // Y position in the canvas
-  }
+  };
+
+  this.playerCatalog = {
+    boy: 'images/char-boy.png',
+    catGirl: 'images/char-cat-girl.png',
+    hornGirl: 'images/char-horn-girl.png',
+    pinkGirl: 'images/char-pink-girl.png',
+    princess: 'images/char-princess-girl.png'
+  };
+
+  this.selectedPlayer = 'boy';
 };
 
 /**
@@ -20,7 +27,7 @@ var HUD = function(x, y) {
  * @param {Number} dt - A time delta between ticks (in milliseconds)
  */
 HUD.prototype.update = function(dt) {
-  // Subclasses must override this function
+
 };
 
 /**
@@ -64,11 +71,4 @@ HUD.prototype.pad = function(n, width, z) {
   z = z || '0';
   n = n + '';
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
-}
-
-
-
-
-
-
-
+};
