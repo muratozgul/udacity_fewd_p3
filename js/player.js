@@ -93,16 +93,20 @@ Player.prototype.jump = function(direction) {
   this.status.action = 'jumping';
   this.status.startTime = Date.now() / 1000.0;
 
-  if(direction === 'up') {
+  var tile = this.getTile();
+
+  console.log('in tile r:', tile.row, ", c:", tile.col);
+
+  if(direction === 'up' && tile.row > 0) {
     this.status.direction = this.directions.UP;
     this.status.distanceLeft = level.tileData.surfaceHeight;
-  } else if(direction === 'right') {
+  } else if(direction === 'right' && tile.col < level.numCols-1) {
     this.status.direction = this.directions.RIGHT;
     this.status.distanceLeft = level.tileData.width;
-  } else if(direction === 'down') {
+  } else if(direction === 'down' && tile.row < level.numRows-1) {
     this.status.direction = this.directions.DOWN;
     this.status.distanceLeft = level.tileData.surfaceHeight;
-  } else if(direction === 'left') {
+  } else if(direction === 'left' && tile.col > 0) {
     this.status.direction = this.directions.LEFT;
     this.status.distanceLeft = level.tileData.width;
   }
@@ -110,6 +114,16 @@ Player.prototype.jump = function(direction) {
 
 Player.prototype.setSpriteImage = function(imageUrl) {
   this.sprite.image = imageUrl;
+};
+
+Unit.prototype.getTile = function() {
+  var rcb = this.relCollisionBox;
+  var td = level.tileData;
+
+  var row = Math.floor((this.drawPosition.y + rcb.bottomOffset - td.surfaceTopOffset) / td.surfaceHeight);
+  var col = Math.floor((this.drawPosition.x + rcb.leftOffset) / level.tileData.width);
+  
+  return {row: row, col: col};
 };
 
 Player.prototype.reset = function() {
