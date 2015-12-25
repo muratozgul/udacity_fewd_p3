@@ -62,6 +62,9 @@ Player.prototype.update = function(dt) {
     
     if(this.status.distanceLeft <= 0) {
       this.status.action = 'idle';
+      if(this.getTile().row === 0){
+        menu.state = menu.states.WIN;
+      }
     }
   }
 
@@ -94,8 +97,6 @@ Player.prototype.jump = function(direction) {
   this.status.startTime = Date.now() / 1000.0;
 
   var tile = this.getTile();
-
-  console.log('in tile r:', tile.row, ", c:", tile.col);
 
   if(direction === 'up' && tile.row > 0) {
     this.status.direction = this.directions.UP;

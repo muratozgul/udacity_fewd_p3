@@ -40,8 +40,8 @@ Unit.prototype.update = function(dt) {
  */
 Unit.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite.image), this.drawPosition.x, this.drawPosition.y);
-  this.drawSpriteBox();
-  this.drawCollisionBox();
+  //this.drawSpriteBox();
+  //this.drawCollisionBox();
 };
 
 /**

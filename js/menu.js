@@ -58,7 +58,7 @@ Menu.prototype.renderSelection = function() {
   this.rightButton.render();
   this.leftButton.render();
 
-  this.drawTextWithBackground("Use keyboard arrow keys to change player", this.CW/2, 200);
+  this.drawTextWithBackground("Use keyboard arrow keys to select hero", this.CW/2, 200);
   this.drawTextWithBackground("Press enter to start", this.CW/2, 450);
 
   //draw player image
@@ -66,11 +66,11 @@ Menu.prototype.renderSelection = function() {
 };
 
 Menu.prototype.renderWin = function() {
-  this.drawTextWithBackground("YOU WIN", this.CW/2, 450);
+  this.drawTextWithBackground("YOU WIN! Press Enter to play again", this.CW/2, 450);
 };
 
 Menu.prototype.renderLose = function() {
-  this.drawTextWithBackground("YOU LOSE", this.CW/2, 450);
+  this.drawTextWithBackground("YOU LOSE :( Press Enter to play again", this.CW/2, 450);
 };
 
 Menu.prototype.handleInput = function(keyString) {

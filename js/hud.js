@@ -61,6 +61,7 @@ HUD.prototype.clearHUDspace = function() {
 
 HUD.prototype.reset = function() {
   this.timer = 0;
+  this.clearHUDspace();
 }
 
 HUD.prototype.pad = function(n, width, z) {
