@@ -11,7 +11,7 @@
 ### Rules:
 * Goal is to reach the water
 * Reaching the water gives +100 points
-* Collecting the starts gives +50 points (Not necessary to win)
+* Collecting the stars gives +50 points (Not necessary to win)
 * Touching the bugs will kill you, you lose all your score
 * You keep your score if you win
 
